@@ -1,12 +1,41 @@
 import { useState } from 'react';
 import MenuMobile from './MenuMobile';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 function Header() {
+  const initialValueForm: { search: string } = {
+    search: '',
+  };
+
+  const location = useLocation();
+
+  function isSearchVisible(): boolean {
+    return location.pathname.includes('/search');
+  }
+
+  const [form, setForm] = useState(initialValueForm);
+  const navigate = useNavigate();
+
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState<boolean>(false);
 
   function toggleIsMobileMenuOpen() {
     setIsMobileMenuOpen(!isMobileMenuOpen);
+  }
+
+  function onChange(event: React.ChangeEvent<HTMLInputElement>) {
+    // Desestruturação do nome e valor da propriedade do campo
+    const { value, name } = event.target;
+
+    // Pega o valor antigo e adiciona o novo que veio
+    setForm({ ...form, [name]: value });
+  }
+
+  function handleSearch(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    // const filter = form.search;
+
+    navigate(`/search/${form.search}`);
+    // setForm({ search: '' });
   }
 
   return (
@@ -36,8 +65,17 @@ function Header() {
 
         <div className="flex justify-start items-center">
           <div className="search block max-lg:hidden">
-            <form className="flex">
-              <input type="text" name="search" placeholder="Busca..." />
+            <form
+              className={isSearchVisible() ? 'hidden' : 'flex'}
+              onSubmit={handleSearch}
+            >
+              <input
+                type="text"
+                name="search"
+                placeholder="Busca..."
+                onChange={onChange}
+                value={form.search}
+              />
               <button className="btn-search"></button>
             </form>
           </div>

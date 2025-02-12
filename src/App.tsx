@@ -33,7 +33,7 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/post/:idPost" element={<Post />} />
-            <Route path="/search" element={<Search />} />
+            <Route path="/search/:word_search" element={<Search />} />
             <Route path="*" element={<NotFound />} />
           </Route>
         </Routes>

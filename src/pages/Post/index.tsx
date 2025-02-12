@@ -24,7 +24,6 @@ function Post() {
             .then((response: AxiosResponse<UserInterface>) => {
               setPostAuthor(response.data);
               setTimeout(() => {
-                console.log('Bateu');
                 setIsLoading(false);
               }, 5000);
             });
