@@ -40,13 +40,13 @@ function Contact() {
           <h5 className="mt-8">Algumas informações</h5>
 
           <h6 className="text-primary-light mt-8">Info.</h6>
-          <p>Projeto Blog. em React.js do curso FrontPUSH.</p>
+          <p>Projeto Blog.</p>
 
           <h6 className="text-primary-light mt-8">Address</h6>
-          <p>Brasília, DF.</p>
+          <p>Rio de Janeiro, RJ.</p>
 
           <h6 className="text-primary-light mt-8">E-mail</h6>
-          <p>nasser.yousef.unb@gmail.com</p>
+          <p>rafael.freitasfa@gmail.com</p>
 
           <h6 className="text-primary-light mt-8">Redes sociais</h6>
 
